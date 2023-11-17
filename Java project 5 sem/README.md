@@ -1,43 +1,43 @@
-# Huffman Coding Project
+# Проект кодирование и декодирование файлов с помощью алгоритма Хаффмена
 
-## About the Project
+## Описание проекта
 
-The Huffman coding project is a Java application designed to encode and decode text data using the Huffman algorithm and obtain information about the encoded file. The Huffman algorithm is a data compression method based on the construction of an optimal prefix binary tree.
+Проект представляет собой приложение на языке Java, предназначенное для кодирования и декодирования текстовых данных с использованием алгоритма Хаффмана, а также для получения информации о закодированном файле. Алгоритм Хаффмана - это метод сжатия данных, основанный на построении оптимального префиксного бинарного дерева.
 
-## Project Structure
+## Структура проекта
 
-The project is divided into several components:
+Проект разделен на несколько компонентов:
 
-1. **`Huffman` (Main Class)**
-   - The main application class containing the main method for execution.
+1. **`Huffman` (Основной класс)**
+   - Основной класс приложения, содержащий главный метод для выполнения.
 
-2. **`BitInputStream` and `BitOutputStream`**
-   - Classes for convenient input and output of bit data.
+2. **`BitInputStream` и `BitOutputStream`**
+   - Классы для удобного ввода и вывода битовых данных.
 
 3. **`Node`**
-   - A class representing a node in the coding tree.
+   - Класс, представляющий узел в кодирующем дереве.
 
 4. **`FileUtility`**
-   - A utility class with useful functions.
+   - Утилитарный класс с полезными функциями.
 
 5. **`FileWriter`**
-   - A class for writing encoded and decoded data to files.
+   - Класс для записи закодированных и декодированных данных в файлы.
 
 6. **`FileReader`**
-   - A class for reading files and obtaining information about the compressed file size.
+   - Класс для чтения файлов и получения информации о размере сжатого файла.
 
 7. **`HuffmanEncoder`**
-   - Сlass serves as a utility for generating Huffman codes, constructing Huffman trees, and displaying Huffman codes for individual characters.
+   - Класс, служащий утилитой для генерации кодов Хаффмана, построения деревьев Хаффмана и отображения кодов Хаффмана для отдельных символов.
 
-## Running the Project
+## Запуск проекта
 
-The project supports the following modes:
+Проект поддерживает следующие режимы:
 
-- **`encode`** - Encode a file.
-- **`decode`** - Decode a compressed file.
-- **`info`** - Get information about compressed file.
+- **`encode`** - Закодировать файл.
+- **`decode`** - Декодировать сжатый файл.
+- **`info`** - Получить информацию о сжатом файле.
 
-Example runs:
+Примеры запуска:
 
 ```bash
 java Huffman encode input.txt
@@ -45,8 +45,8 @@ java Huffman decode input.ark
 java Huffman info input.ark
 ```
 
-## Example Input File
+## Пример
 
-This is an example of input file ![input.txt](Example/input.png)
+пример входного файла ![input.txt](Example/input.png)
 
-This is an info about the encoded input.arc ![info](Example/info.png)
+информация о закодированном input.arc ![info](Example/info.png)
