@@ -47,6 +47,6 @@ java Huffman info input.ark
 
 ## Example Input File
 
-This is an example of input file ![input.txt]("Example files"/input.png).
+This is an example of input file ![input.txt](Example/input.png)
 
-This is an info about the encoded input.arc ![info]("Example files"/info.png).
+This is an info about the encoded input.arc ![info](Example/info.png)
