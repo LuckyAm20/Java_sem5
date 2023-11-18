@@ -1,35 +1,61 @@
-class MyClass {
-    private int value;
+class MyPerson {
+    private final String name;
+    private final int age;
+    private final String address;
+    private final String occupation;
+    private final String gender;
 
-    public MyClass(int value) {
-        this.value = value;
+    public MyPerson(String name, int age, String address, String occupation, String gender) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.occupation = occupation;
+        this.gender = gender;
     }
 
-    public int get() {
-        return value;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
     }
+}
 
-    public void swap(MyClass other) {
-        int temp = this.value;
-        this.value = other.value;
-        other.value = temp;
+class SwapUtil {
+    public static <T> void swap(T obj1, T obj2) {
+        try {
+            java.lang.reflect.Field[] fields = obj1.getClass().getDeclaredFields();
+            for (java.lang.reflect.Field field : fields) {
+                field.setAccessible(true);
+                Object temp = field.get(obj1);
+                field.set(obj1, field.get(obj2));
+                field.set(obj2, temp);
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        MyClass obj1 = new MyClass(5);
-        MyClass obj2 = new MyClass(10);
+        MyPerson person1 = new MyPerson("Misha", 20, "Saint Petersburg", "Student", "Male");
+        MyPerson person2 = new MyPerson("Lena", 25, "Moscow", "Teacher", "Female");
 
         System.out.println("Before:");
-        System.out.println("Obj 1: " + obj1.get());
-        System.out.println("Obj 2: " + obj2.get());
+        System.out.println("Person 1: " + person1);
+        System.out.println("Person 2: " + person2);
 
-        obj1.swap(obj2);
+
+        SwapUtil.swap(person1, person2);
 
         System.out.println("After:");
-        System.out.println("Obj 1: " + obj1.get());
-        System.out.println("Obj 2: " + obj2.get());
+        System.out.println("Person 1: " + person1);
+        System.out.println("Person 2: " + person2);
     }
 }
 
