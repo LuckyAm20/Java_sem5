@@ -35,7 +35,7 @@ public class BitOutputStream implements Closeable {
     @Override
     public void close() throws IOException {
         while (numBitsFilled != 0) {
-            writeBit(false);
+            writeBit(true);
         }
         outputStream.close();
     }
