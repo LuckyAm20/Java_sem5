@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0908b817-cbef-4501-bd52-c715751325b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/Java project 5 sem.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/BitInputStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/BitOutputStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/FileReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/FileUtility.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/FileWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/Huffman.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java project 5 sem/src/Huffman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/HuffmanEncoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java project 5 sem/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java project 5 sem/src/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/lab1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab10/lab10.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/lab2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/lab3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4/lab4.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/lab5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/lab6.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/lab7.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/lab8.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab9/lab9.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2Za9KkwGpzUI0sJS8X9qlNox1vJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Misha/Documents/IdeaProjects/java_5sem/Java project 5 sem"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0908b817-cbef-4501-bd52-c715751325b4" name="Changes" comment="" />
+      <created>1702649260723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702649260723</updated>
+    </task>
+    <servers />
+  </component>
+</project>

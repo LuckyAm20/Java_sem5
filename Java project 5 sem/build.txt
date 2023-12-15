@@ -10,4 +10,4 @@
 - ѕерейдите в каталог проекта:
   cd "Java project 5 sem"/src
 - »спользуйте команду Javac дл€ компил€ции Java-кода:
-  javac Huffman.java
+  javac Main.java

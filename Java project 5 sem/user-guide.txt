@@ -2,14 +2,14 @@
 
 - Перейдите в каталог src.
 - Выполните следующую команду для запуска приложения:
-  java Huffman <encode/decode/info> <inputFile>
+  java Main <encode/decode/info> <inputFile>
 
 Примеры команд запуска
 - Команда Encode:
-  java Huffman encode input.txt
+  java Main encode input.txt
 - Команда Decode:
-  java Huffman decode input.ark
+  java Main decode input.arc
 - Команда Info:
-  java Huffman info input.ark
+  java Main info input.arc
 
 Закодированные и декодированные файлы будут созданы в папке, где находится inputFile.
