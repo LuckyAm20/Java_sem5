@@ -1,54 +1,118 @@
-import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Huffman {
+  HashMap<Byte, String> codeMap = new HashMap<>();
 
-    public static void main(String[] args) {
-        if (args.length < 2) {
-            System.out.println("Use: java Huffman <encode/decode/info> <inputFile>");
-            return;}
+  public byte[] encode(byte[] data) {
+    HashMap<Byte, Integer> weightMap = calculateWeightMap(data);
+    PriorityQueue<Node> weightQueue = buildWeightQueue(weightMap);
+    Node root = buildHuffmanTree(weightQueue);
 
-        String mode = args[0].toLowerCase();
-        String inputFile = args[1];
+    root.fillCodeMap("", this.codeMap);
 
-        try {
-            switch (mode) {
-                case "encode" -> {
-                    String text = FileReader.readFile(inputFile);
-                    Node root = HuffmanEncoder.buildHuffmanTree(text);
-                    Map<Character, String> huffmanCode = new HashMap<>();
-                    HuffmanEncoder.generateHuffmanCodes(root, "", huffmanCode);
-                    StringBuilder encodedString = new StringBuilder();
-                    for (char c : text.toCharArray()) {
-                        encodedString.append(huffmanCode.get(c));
-                    }
-                    FileWriter.saveToFile(inputFile, huffmanCode, encodedString.toString());
-                }
-                case "decode" -> {
-                    BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
-                    String defaultExtension = FileReader.readExtensionFromFile(bitInputStream);
-                    Map<Character, String> huffmanCode = FileReader.readHuffmanCode(bitInputStream);
-                    String decodedString = FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
-                    FileWriter.saveDecodedDataToFile(inputFile, defaultExtension, decodedString);
-                }
-                case "info" -> {
-                    BitInputStream bitInputStream = new BitInputStream(new FileInputStream(inputFile));
-                    FileReader.readExtensionFromFile(bitInputStream);
-                    Map<Character, String> huffmanCode = FileReader.readHuffmanCode(bitInputStream);
-                    String decodedString = FileReader.readEncodedStringFromFile(bitInputStream, huffmanCode);
-                    int originalSize = FileUtility.getOriginalSize(decodedString);
-                    long compressedSize = FileUtility.getCompressedSize(inputFile);
-                    double compressionRatio = (double) compressedSize / originalSize;
-                    HuffmanEncoder.printHuffmanCodes(huffmanCode);
-                    System.out.println("Original size: " + originalSize + " bytes");
-                    System.out.println("Compressed size: " + compressedSize + " bytes");
-                    System.out.println("Compression ratio: " + compressionRatio * 100 + "%");
-                }
-                default -> System.out.println("Invalid mode. Use 'encode', 'decode', or 'info'.");
-            }
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+    String compressed = compressData(data);
+    compressed = padWithZeros(compressed);
+
+    return convertToByteArray(compressed);
+  }
+
+  public byte[] decode(String compressed, HashMap<String, Byte> recoveryMap) {
+    ArrayList<Byte> result = new ArrayList<>();
+    StringBuilder current = new StringBuilder();
+
+    for (int index = 0; index < compressed.length(); index++) {
+      current.append(compressed.charAt(index));
+
+      if (recoveryMap.containsKey(current.toString())) {
+        result.add(recoveryMap.get(current.toString()));
+        current.setLength(0);
+      }
     }
+
+    return convertListToArray(result);
+  }
+
+  private String padWithZeros(String compressed) {
+    int delta = 8 - compressed.length() % 8;
+
+    for (int counter = 0; counter < delta; counter++) {
+      compressed += "0";
+    }
+
+    return String.format("%8s", Integer.toBinaryString(delta & 0xff)).replace(" ", "0") + compressed;
+  }
+
+  private Node buildHuffmanTree(PriorityQueue<Node> queue) {
+    while (queue.size() > 1) {
+      Node node1 = queue.poll();
+      Node node2 = queue.poll();
+
+      Node node = new Node(node1.frequency + node2.frequency);
+      node.right = node1;
+      node.left = node2;
+
+      queue.add(node);
+    }
+
+    return queue.poll();
+  }
+
+  private PriorityQueue<Node> buildWeightQueue(HashMap<Byte, Integer> map) {
+    PriorityQueue<Node> queue = new PriorityQueue<>();
+
+    for (Map.Entry<Byte, Integer> entry : map.entrySet()) {
+      Byte symbol = entry.getKey();
+      Integer weight = entry.getValue();
+      Node node = new Leaf(symbol, weight);
+
+      queue.add(node);
+    }
+
+    return queue;
+  }
+
+  private HashMap<Byte, Integer> calculateWeightMap(byte[] data) {
+    HashMap<Byte, Integer> map = new HashMap<>();
+
+    for (byte b : data) {
+      map.merge(b, 1, Integer::sum);
+    }
+
+    return map;
+  }
+
+  private String compressData(byte[] data) {
+    StringBuilder compressed = new StringBuilder();
+
+    for (byte b : data) {
+      compressed.append(codeMap.get(b));
+    }
+
+    return compressed.toString();
+  }
+
+  private byte[] convertToByteArray(String compressed) {
+    StringBuilder compressedString = new StringBuilder(compressed);
+    byte[] result = new byte[compressedString.length() / 8];
+
+    for (int index = 0; index < result.length; index++) {
+      result[index] = (byte) Integer.parseInt(
+              compressedString.substring(index * 8, (index + 1) * 8), 2
+      );
+    }
+
+    return result;
+  }
+
+  private byte[] convertListToArray(ArrayList<Byte> list) {
+    byte[] result = new byte[list.size()];
+    for (int i = 0; i < result.length; i++) {
+      result[i] = list.get(i);
+    }
+    return result;
+  }
 }
+

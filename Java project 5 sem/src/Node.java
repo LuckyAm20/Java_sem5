@@ -1,17 +1,26 @@
-public class Node {
-    char symbol;
-    int freq;
-    Node left = null, right = null;
+import java.util.HashMap;
 
-    Node(char symbol_, int freq_) {
-        symbol = symbol_;
-        freq = freq_;
-    }
+public class Node implements Comparable<Node> {
+  public Integer frequency;
+  public Node left;
+  public Node right;
 
-    Node(char symbol_, int freq_, Node left_, Node right_) {
-        symbol = symbol_;
-        freq = freq_;
-        left = left_;
-        right = right_;
-    }
-}
+  public Node(Integer frequency) {
+    this.frequency = frequency;
+  };
+
+  @Override
+  public int compareTo(Node n) {
+    return this.frequency.compareTo(n.frequency);
+  };
+
+  public String toString() {
+    return "w=" + this.frequency;
+  };
+
+
+  public void fillCodeMap(String character, HashMap<Byte, String> codeMap) {
+    this.left.fillCodeMap(character + "0", codeMap);
+    this.right.fillCodeMap(character + "1", codeMap);
+  };
+};
